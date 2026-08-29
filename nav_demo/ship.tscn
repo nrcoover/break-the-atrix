@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://m2oakcsgc07t"]
+
+[ext_resource type="Script" uid="uid://3ox4na8ggrck" path="res://nav_demo/ship.gd" id="1_a0cmj"]
+[ext_resource type="Texture2D" uid="uid://bb3o12u52mbav" path="res://assets/images/ship (4).png" id="1_g7m32"]
+
+[node name="Ship" type="Node2D" unique_id=1823965232]
+script = ExtResource("1_a0cmj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=568820238]
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_g7m32")
+
+[node name="Label" type="Label" parent="." unique_id=793259477]
+top_level = true
+offset_left = 21.0
+offset_top = 15.0
+offset_right = 61.0
+offset_bottom = 38.0
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "asdasdasd
+asdasdasd"
