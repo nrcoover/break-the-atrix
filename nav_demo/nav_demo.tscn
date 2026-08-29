@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://lh2orfk6mk4o" path="res://nav_demo/mine.tscn" id="3_t8u7m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t8u7m"]
-vertices = PackedVector2Array(558, 78, 558, 243, 301, 243, 17, 78, 17, 557, 301, 557)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(7, 567, 311, 567, 311, 253, 568, 253, 568, 68, 7, 68)])
+vertices = PackedVector2Array(759.96875, 78.953125, 759.02344, 557, 593.2578, 317.9375, 577.1719, 273.96094, 567.9531, 78, 586.5, 364.17188, 561.35156, 243.53906, 569.8281, 384.6875, 17, 557, 512.3672, 402.03125, 467.1875, 401, 425.45313, 404.0703, 398.3203, 399.03906, 354.53906, 401.07813, 322.95313, 390.14063, 17, 78, 304.17188, 353.7578, 300.89844, 307.89844, 315.9375, 256.97656, 393.72656, 233.64063, 431.6797, 242.86719, 488.9375, 236.95313)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1), PackedInt32Array(4, 3, 6), PackedInt32Array(7, 5, 1), PackedInt32Array(7, 1, 8, 9), PackedInt32Array(10, 9, 8, 11), PackedInt32Array(12, 11, 8, 13), PackedInt32Array(14, 13, 8), PackedInt32Array(14, 8, 15, 16), PackedInt32Array(17, 16, 15), PackedInt32Array(18, 17, 15), PackedInt32Array(18, 15, 4, 19), PackedInt32Array(20, 19, 4, 21), PackedInt32Array(4, 6, 21)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7, 567, 311, 567, 769, 567, 770, 69, 568, 68, 7, 68)])
 
 [node name="NavDemo" type="Node" unique_id=1177783880]
 
@@ -28,3 +28,7 @@ position = Vector2(705, 301)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=338237613]
 navigation_polygon = SubResource("NavigationPolygon_t8u7m")
+
+[node name="Island" type="Polygon2D" parent="NavigationRegion2D" unique_id=2094860268]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(311, 309, 324, 265, 394, 244, 431, 253, 489, 247, 555, 253, 568, 278, 583, 319, 577, 360, 564, 376, 511, 392, 467, 391, 426, 394, 399, 389, 356, 391, 330, 382, 314, 351)
