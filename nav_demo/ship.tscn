@@ -21,3 +21,6 @@ theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "asdasdasd
 asdasdasd"
+
+[node name="NavAgent2D" type="NavigationAgent2D" parent="." unique_id=864456673]
+debug_enabled = true

@@ -4,6 +4,11 @@
 [ext_resource type="TileSet" uid="uid://c3k3lr2j6oo1m" path="res://resources/demo_tiles.tres" id="1_ov1wd"]
 [ext_resource type="PackedScene" uid="uid://lh2orfk6mk4o" path="res://nav_demo/mine.tscn" id="3_t8u7m"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_t8u7m"]
+vertices = PackedVector2Array(558, 78, 558, 243, 301, 243, 17, 78, 17, 557, 301, 557)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7, 567, 311, 567, 311, 253, 568, 253, 568, 68, 7, 68)])
+
 [node name="NavDemo" type="Node" unique_id=1177783880]
 
 [node name="WaterTiles" type="TileMapLayer" parent="." unique_id=174776597]
@@ -20,3 +25,6 @@ position = Vector2(83, 154)
 
 [node name="Mine" parent="." unique_id=1890139197 instance=ExtResource("3_t8u7m")]
 position = Vector2(705, 301)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=338237613]
+navigation_polygon = SubResource("NavigationPolygon_t8u7m")
