@@ -19,6 +19,11 @@ vertices = PackedVector2Array(1174, 95.75781, 1174, 172.85938, 773.85156, 209.06
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(762, 76, 1184, 86, 1184, 182, 764, 220)])
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_l1hx0"]
+vertices = PackedVector2Array(842.5703, 546.96875, 833.85156, 347.28906, 947.4297, 423.3125, 1187.8125, 546.02344, 1185.1875, 399.04688)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(833, 557, 823, 328, 950, 413, 1195, 388, 1198, 556)])
+
 [node name="NavDemo" type="Node" unique_id=1177783880]
 
 [node name="WaterTiles" type="TileMapLayer" parent="." unique_id=174776597]
@@ -56,3 +61,15 @@ affect_navigation_mesh = true
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="." unique_id=1225186479]
 navigation_polygon = SubResource("NavigationPolygon_bn3os")
+
+[node name="NavigationRegion2D3" type="NavigationRegion2D" parent="." unique_id=407793345]
+navigation_polygon = SubResource("NavigationPolygon_l1hx0")
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1805961441]
+start_position = Vector2(735, 486)
+end_position = Vector2(859, 445)
+
+[node name="NavigationLink2D2" type="NavigationLink2D" parent="." unique_id=1813865807]
+bidirectional = false
+start_position = Vector2(852, 383)
+end_position = Vector2(835, 187)
