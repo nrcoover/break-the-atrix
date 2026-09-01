@@ -28,6 +28,10 @@ set_target={
 ]
 }
 
+[navigation]
+
+2d/default_edge_connection_margin=24.0
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

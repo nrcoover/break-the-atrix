@@ -14,6 +14,11 @@ source_geometry_group_name = &"navigation_hole"
 [sub_resource type="CircleShape2D" id="CircleShape2D_empkq"]
 radius = 45.607018
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bn3os"]
+vertices = PackedVector2Array(1174, 95.75781, 1174, 172.85938, 773.85156, 209.0625, 772.1406, 86.24219)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(762, 76, 1184, 86, 1184, 182, 764, 220)])
+
 [node name="NavDemo" type="Node" unique_id=1177783880]
 
 [node name="WaterTiles" type="TileMapLayer" parent="." unique_id=174776597]
@@ -48,3 +53,6 @@ shape = SubResource("CircleShape2D_empkq")
 position = Vector2(630, 487)
 vertices = PackedVector2Array(-39, 18, -24, -45, 52, -44, 33, 31)
 affect_navigation_mesh = true
+
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="." unique_id=1225186479]
+navigation_polygon = SubResource("NavigationPolygon_bn3os")
