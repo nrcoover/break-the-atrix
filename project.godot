@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="DoNotMindMeStarter"
+config/name="BreakTheAtrix"
 run/main_scene="uid://dif233c7iktyu"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
