@@ -10,3 +10,6 @@ range_px = 80.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=960017993]
 texture = ExtResource("1_f6i3q")
+
+[node name="NavObstacle" type="NavigationObstacle2D" parent="." unique_id=543951251]
+radius = 32.0

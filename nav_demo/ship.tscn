@@ -21,3 +21,12 @@ theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "asdasdasd
 asdasdasd"
+
+[node name="NavAgent2D" type="NavigationAgent2D" parent="." unique_id=864456673]
+avoidance_enabled = true
+time_horizon_agents = 5.0
+time_horizon_obstacles = 3.0
+max_speed = 300.0
+debug_enabled = true
+
+[connection signal="velocity_computed" from="NavAgent2D" to="." method="_on_nav_agent_2d_velocity_computed"]
