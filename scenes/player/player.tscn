@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bwnjy7x2mjj4h"]
+
+[ext_resource type="Texture2D" uid="uid://cecrc1u428yxo" path="res://assets/images/survivor1_gun.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://cpsn6f4fpdwss" path="res://scenes/player/player.gd" id="1_dovo2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_empkq"]
+radius = 13.0
+height = 36.0
+
+[node name="Player" type="CharacterBody2D" unique_id=200549599]
+motion_mode = 1
+script = ExtResource("1_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=150903494]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_8afob")
+offset = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674399427]
+shape = SubResource("CapsuleShape2D_empkq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1497736181]
+zoom = Vector2(1.8, 1.8)
+limit_left = 0
+limit_top = 0
+limit_right = 3262
+limit_bottom = 1660
