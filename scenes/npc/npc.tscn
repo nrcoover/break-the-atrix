@@ -21,3 +21,18 @@ shape = SubResource("CapsuleShape2D_pcwmf")
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=1626550319]
 debug_enabled = true
 debug_path_custom_color = Color(0.9999972, 0.29553244, 0.27435127, 1)
+
+[node name="PlayerDetect" type="RayCast2D" parent="." unique_id=1399270149]
+target_position = Vector2(400, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1563070214]
+
+[node name="DebugLabel" type="Label" parent="CanvasLayer" unique_id=1661111282]
+top_level = true
+offset_left = 11.0
+offset_top = 22.0
+offset_right = 264.0
+offset_bottom = 67.0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "placeholder text"

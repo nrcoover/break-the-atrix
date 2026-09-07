@@ -9,11 +9,14 @@ enum EnemyState { Patrolling, Searching, Chasing }
 
 
 @onready var nav_agent: NavigationAgent2D = $NavAgent
+@onready var player_detect: RayCast2D = $PlayerDetect
+@onready var debug_label: Label = $CanvasLayer/DebugLabel
 
 
 var _patrol_points: Array[Vector2]
 var _state: EnemyState = EnemyState.Patrolling
 var _patrol_index: int = 0
+var _player_ref: Player
 
 
 func _ready() -> void:
@@ -23,11 +26,16 @@ func _ready() -> void:
 	if _patrol_points.size() < 2:
 		queue_free()
 		return
+	
+	identify_player()
 
 
 func _physics_process(delta: float) -> void:
 	process_behaviour()
 	update_movement(delta)
+	update_raycast()
+	
+	update_debug_label()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -42,6 +50,29 @@ func update_movement(delta: float) -> void:
 	var direction: Vector2 = global_position.direction_to(next_path_position)
 	position += direction * speed * delta
 	rotation = direction.angle()
+
+
+func identify_player() -> void:
+	_player_ref = get_tree().get_first_node_in_group("player")
+	
+	if !_player_ref:
+		queue_free()
+		return
+
+
+func can_see_player() -> bool:
+	var max_angle_of_sight: int = 60
+	return player_detect.get_collider() is Player and abs(get_field_of_view_angle()) < max_angle_of_sight
+
+
+func get_field_of_view_angle() -> float:
+	var direction: Vector2 = global_position.direction_to(_player_ref.global_position)
+	var angle_to_player: float = transform.x.angle_to(direction)
+	return rad_to_deg(angle_to_player)
+
+
+func update_raycast() -> void:
+	player_detect.look_at(_player_ref.global_position)
 
 
 func navigate_to_patrol_point() -> void:
@@ -59,3 +90,8 @@ func process_behaviour() -> void:
 	match _state:
 		EnemyState.Patrolling:
 			process_patrolling()
+
+
+func update_debug_label() -> void:
+	debug_label.text = "See Player: %s" % can_see_player()
+	debug_label.text += "\nFOV: %.1f" % get_field_of_view_angle()
