@@ -4,7 +4,7 @@ extends Area2D
 enum EnemyState { Patrolling, Searching, Chasing }
 
 
-@export var speed: float = 120.0
+@export var speed: float = Constants.npc_speed
 @export var patrol_points: Node2D
 
 
@@ -31,6 +31,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	handle_player_detection()
 	process_behaviour()
 	update_movement(delta)
 	update_raycast()
@@ -71,6 +72,13 @@ func get_field_of_view_angle() -> float:
 	return rad_to_deg(angle_to_player)
 
 
+func handle_player_detection() -> void:
+	if can_see_player():
+		change_state(EnemyState.Chasing)
+	elif _state == EnemyState.Chasing:
+		change_state(EnemyState.Searching)
+
+
 func update_raycast() -> void:
 	player_detect.look_at(_player_ref.global_position)
 
@@ -86,12 +94,32 @@ func process_patrolling() -> void:
 		navigate_to_patrol_point()
 
 
+func process_searching() -> void:
+	if nav_agent.is_navigation_finished():
+		change_state(EnemyState.Patrolling)
+
+
+func process_chasing() -> void:
+	nav_agent.target_position = _player_ref.global_position
+
+
 func process_behaviour() -> void:
 	match _state:
 		EnemyState.Patrolling:
 			process_patrolling()
+		EnemyState.Chasing:
+			process_chasing()
+		EnemyState.Searching:
+			process_searching()
+
+
+func change_state(new_state: EnemyState) -> void:
+	if new_state == _state: return
+	
+	_state = new_state
 
 
 func update_debug_label() -> void:
 	debug_label.text = "See Player: %s" % can_see_player()
 	debug_label.text += "\nFOV: %.1f" % get_field_of_view_angle()
+	debug_label.text += "\nState: %s" % EnemyState.keys()[_state]
