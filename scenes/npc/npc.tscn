@@ -2,10 +2,19 @@
 
 [ext_resource type="Script" uid="uid://c0f0l1mwpxtlj" path="res://scenes/npc/npc.gd" id="1_pcwmf"]
 [ext_resource type="Texture2D" uid="uid://stk0yuourdif" path="res://assets/images/soldier1_gun.png" id="1_sspvn"]
+[ext_resource type="AudioStream" uid="uid://bvfa7syt84f4q" path="res://assets/sounds/gasp1.wav" id="3_woxlu"]
+[ext_resource type="AudioStream" uid="uid://cp7nn3wwabjas" path="res://assets/sounds/gasp2.wav" id="4_ay68w"]
+[ext_resource type="AudioStream" uid="uid://b1hfk7f3ffmlo" path="res://assets/sounds/gasp3.wav" id="5_evswx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pcwmf"]
 radius = 11.0
 height = 26.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pcwmf"]
+streams_count = 3
+stream_0/stream = ExtResource("3_woxlu")
+stream_1/stream = ExtResource("4_ay68w")
+stream_2/stream = ExtResource("5_evswx")
 
 [node name="Npc" type="Area2D" unique_id=1878261469]
 script = ExtResource("1_pcwmf")
@@ -36,3 +45,6 @@ offset_bottom = 67.0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "placeholder text"
+
+[node name="Gasp" type="AudioStreamPlayer2D" parent="." unique_id=1466584077]
+stream = SubResource("AudioStreamRandomizer_pcwmf")

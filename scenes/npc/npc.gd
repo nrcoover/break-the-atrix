@@ -11,6 +11,7 @@ enum EnemyState { Patrolling, Searching, Chasing }
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var player_detect: RayCast2D = $PlayerDetect
 @onready var debug_label: Label = $CanvasLayer/DebugLabel
+@onready var gasp: AudioStreamPlayer2D = $Gasp
 
 
 var _patrol_points: Array[Vector2]
@@ -117,6 +118,11 @@ func change_state(new_state: EnemyState) -> void:
 	if new_state == _state: return
 	
 	_state = new_state
+	
+	match _state:
+		EnemyState.Chasing:
+			if not gasp.is_playing():
+				gasp.play()
 
 
 func update_debug_label() -> void:
