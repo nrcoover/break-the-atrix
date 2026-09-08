@@ -138,9 +138,9 @@ func change_state(new_state: EnemyState) -> void:
 				gasp.play()
 			animation_player.play("chasing")
 		EnemyState.Searching:
-			animation_player.play("chasing")
+			animation_player.play("searching")
 		EnemyState.Patrolling:
-			animation_player.play("REST")
+			animation_player.play("RESET")
 
 
 func update_debug_label() -> void:

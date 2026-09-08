@@ -33,6 +33,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ay68w"]
 resource_name = "chasing"
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
