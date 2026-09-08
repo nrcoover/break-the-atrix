@@ -4,7 +4,20 @@ extends Area2D
 enum EnemyState { Patrolling, Searching, Chasing }
 
 
-@export var speed: float = Constants.npc_speed
+var SPEEDS: Dictionary[EnemyState, float] = {
+	EnemyState.Patrolling: Constants.npc_speed,
+	EnemyState.Searching: Constants.npc_search_speed,
+	EnemyState.Chasing: Constants.npc_chase_speed,
+}
+
+
+var FIELD_OF_VIEWS: Dictionary[EnemyState, float] = {
+	EnemyState.Patrolling: Constants.npc_field_of_view,
+	EnemyState.Searching: Constants.npc_searching_field_of_view,
+	EnemyState.Chasing: Constants.npc_chasing_field_of_view,
+}
+
+
 @export var patrol_points: Node2D
 
 
@@ -12,6 +25,7 @@ enum EnemyState { Patrolling, Searching, Chasing }
 @onready var player_detect: RayCast2D = $PlayerDetect
 @onready var debug_label: Label = $CanvasLayer/DebugLabel
 @onready var gasp: AudioStreamPlayer2D = $Gasp
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var _patrol_points: Array[Vector2]
@@ -50,7 +64,7 @@ func update_movement(delta: float) -> void:
 	
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	var direction: Vector2 = global_position.direction_to(next_path_position)
-	position += direction * speed * delta
+	position += direction * SPEEDS[_state] * delta
 	rotation = direction.angle()
 
 
@@ -63,8 +77,7 @@ func identify_player() -> void:
 
 
 func can_see_player() -> bool:
-	var max_angle_of_sight: int = 60
-	return player_detect.get_collider() is Player and abs(get_field_of_view_angle()) < max_angle_of_sight
+	return player_detect.get_collider() is Player and abs(get_field_of_view_angle()) < FIELD_OF_VIEWS[_state]
 
 
 func get_field_of_view_angle() -> float:
@@ -123,6 +136,11 @@ func change_state(new_state: EnemyState) -> void:
 		EnemyState.Chasing:
 			if not gasp.is_playing():
 				gasp.play()
+			animation_player.play("chasing")
+		EnemyState.Searching:
+			animation_player.play("chasing")
+		EnemyState.Patrolling:
+			animation_player.play("REST")
 
 
 func update_debug_label() -> void:
