@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cd4mqm5jxfn6i"]
+
+[ext_resource type="Script" uid="uid://bynyucsqxj07r" path="res://scenes/pill/pill.gd" id="1_1wuy4"]
+[ext_resource type="Texture2D" uid="uid://cilxv8b31m6wu" path="res://assets/images/pill2.png" id="1_mldef"]
+[ext_resource type="AudioStream" uid="uid://bsf0uuls5bte0" path="res://assets/sounds/sfx_sounds_powerup1.wav" id="2_h1g0t"]
+[ext_resource type="AudioStream" uid="uid://cwky4w1ie01iw" path="res://assets/sounds/sfx_sounds_powerup2.wav" id="3_1wuy4"]
+[ext_resource type="AudioStream" uid="uid://drx87ol4c6u35" path="res://assets/sounds/sfx_sounds_powerup3.wav" id="4_d0xl4"]
+[ext_resource type="AudioStream" uid="uid://dnj22c5npupyl" path="res://assets/sounds/sfx_sounds_powerup4.wav" id="5_mwgd2"]
+[ext_resource type="AudioStream" uid="uid://csdcqm7lcrcji" path="res://assets/sounds/sfx_sounds_powerup5.wav" id="6_spg0f"]
+[ext_resource type="AudioStream" uid="uid://uvt5wrixupbg" path="res://assets/sounds/sfx_sounds_powerup6.wav" id="7_bjxjg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4qih"]
+radius = 14.035668
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_empkq"]
+streams_count = 6
+stream_0/stream = ExtResource("2_h1g0t")
+stream_1/stream = ExtResource("3_1wuy4")
+stream_2/stream = ExtResource("4_d0xl4")
+stream_3/stream = ExtResource("5_mwgd2")
+stream_4/stream = ExtResource("6_spg0f")
+stream_5/stream = ExtResource("7_bjxjg")
+
+[node name="Pill" type="Area2D" unique_id=943088332 groups=["pill"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_1wuy4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003947742]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_mldef")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1085795455]
+shape = SubResource("CircleShape2D_j4qih")
+
+[node name="CollectionSound" type="AudioStreamPlayer2D" parent="." unique_id=1431915672]
+stream = SubResource("AudioStreamRandomizer_empkq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=6]
+[connection signal="finished" from="CollectionSound" to="." method="_on_collection_sound_finished"]
