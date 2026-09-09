@@ -7,6 +7,7 @@ const npc_chase_speed: float = npc_speed * 1.7
 
 const player_speed_multiplier: float = 2.0
 const player_speed: float = npc_speed * player_speed_multiplier
+const bullet_speed: float = player_speed * 2
 
 const npc_field_of_view: float = 60
 const npc_searching_field_of_view: float = 90

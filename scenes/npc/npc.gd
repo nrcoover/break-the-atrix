@@ -1,6 +1,12 @@
 extends Area2D
 
 
+const BULLET = preload("res://scenes/bullet/bullet.tscn")
+
+
+@onready var bullet_position: Marker2D = $BulletPosition
+
+
 enum EnemyState { Patrolling, Searching, Chasing }
 
 
@@ -25,7 +31,9 @@ var FIELD_OF_VIEWS: Dictionary[EnemyState, float] = {
 @onready var player_detect: RayCast2D = $PlayerDetect
 @onready var debug_label: Label = $CanvasLayer/DebugLabel
 @onready var gasp: AudioStreamPlayer2D = $Gasp
+@onready var laser: AudioStreamPlayer2D = $Laser
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shoot_timer: Timer = $ShootTimer
 
 
 var _patrol_points: Array[Vector2]
@@ -147,3 +155,28 @@ func update_debug_label() -> void:
 	debug_label.text = "See Player: %s" % can_see_player()
 	debug_label.text += "\nFOV: %.1f" % get_field_of_view_angle()
 	debug_label.text += "\nState: %s" % EnemyState.keys()[_state]
+
+
+func shoot() -> void:
+	laser.play()
+	create_bullet()
+	restart_shoot_timer()
+
+
+func create_bullet() -> void:
+	var new_bullet: Bullet = BULLET.instantiate()
+	new_bullet.global_position = bullet_position.global_position
+	new_bullet.setup(bullet_position.global_position.direction_to(_player_ref.global_position))
+	get_tree().current_scene.add_child.call_deferred(new_bullet)
+
+
+func restart_shoot_timer() -> void:
+	var min_wait_time: float = 0.75
+	var max_wait_time: float = 2.25
+	shoot_timer.wait_time = randf_range(min_wait_time, max_wait_time)
+
+
+func _on_shoot_timer_timeout() -> void:
+	if _state != EnemyState.Chasing: return
+	
+	shoot()

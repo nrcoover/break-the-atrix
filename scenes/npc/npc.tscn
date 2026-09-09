@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bvfa7syt84f4q" path="res://assets/sounds/gasp1.wav" id="3_woxlu"]
 [ext_resource type="AudioStream" uid="uid://cp7nn3wwabjas" path="res://assets/sounds/gasp2.wav" id="4_ay68w"]
 [ext_resource type="AudioStream" uid="uid://b1hfk7f3ffmlo" path="res://assets/sounds/gasp3.wav" id="5_evswx"]
+[ext_resource type="AudioStream" uid="uid://catrbaguvetwp" path="res://assets/sounds/sfx_wpn_laser2.wav" id="6_ay68w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pcwmf"]
 radius = 11.0
@@ -75,6 +76,9 @@ _data = {
 [node name="Npc" type="Area2D" unique_id=1878261469]
 script = ExtResource("1_pcwmf")
 
+[node name="BulletPosition" type="Marker2D" parent="." unique_id=661235161]
+position = Vector2(23, 7)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1274736178]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_sspvn")
@@ -105,5 +109,14 @@ text = "placeholder text"
 [node name="Gasp" type="AudioStreamPlayer2D" parent="." unique_id=1466584077]
 stream = SubResource("AudioStreamRandomizer_pcwmf")
 
+[node name="Laser" type="AudioStreamPlayer2D" parent="." unique_id=509470364]
+stream = ExtResource("6_ay68w")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1943644811]
 libraries/ = SubResource("AnimationLibrary_p70cs")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=424664001]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
