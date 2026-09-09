@@ -88,7 +88,6 @@ offset = Vector2(10, 0)
 shape = SubResource("CapsuleShape2D_pcwmf")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=1626550319]
-debug_enabled = true
 debug_path_custom_color = Color(0.9999972, 0.29553244, 0.27435127, 1)
 
 [node name="PlayerDetect" type="RayCast2D" parent="." unique_id=1399270149]
