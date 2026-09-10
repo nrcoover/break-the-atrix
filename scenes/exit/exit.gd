@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func subscribe_to_signals() -> void:
-	SignalManager.on_show_exit.connect(on_show_exit)
+	SignalManager.show_exit.connect(on_show_exit)
 
 
 func on_show_exit() -> void:

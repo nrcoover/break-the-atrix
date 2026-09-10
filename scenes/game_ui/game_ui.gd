@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 
 func subscribe_to_signals() -> void:
-	SignalManager.on_pill_collected.connect(on_pill_collected)
+	SignalManager.pill_collected.connect(on_pill_collected)
 	_pill_count = get_tree().get_nodes_in_group("pill").size()
 
 
@@ -33,7 +33,7 @@ func on_pill_collected() -> void:
 	
 	if _collected == _pill_count:
 		exit_label.show()
-		SignalManager.emit_on_show_exit()
+		SignalManager.emit_show_exit()
 
 
 func update_pill_ui() -> void:

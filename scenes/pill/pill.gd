@@ -10,7 +10,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		collection_sound.play()
 		disable_pill()
-		SignalManager.emit_on_pill_collected()
+		SignalManager.emit_pill_collected()
 
 
 func disable_pill() -> void:

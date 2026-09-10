@@ -1,13 +1,13 @@
 extends Node
 
 
-signal on_pill_collected
-signal on_show_exit
+signal pill_collected
+signal show_exit
 
 
-func emit_on_pill_collected() -> void:
-	on_pill_collected.emit()
+func emit_pill_collected() -> void:
+	pill_collected.emit()
 
 
-func emit_on_show_exit() -> void:
-	on_show_exit.emit()
+func emit_show_exit() -> void:
+	show_exit.emit()
