@@ -17,4 +17,4 @@ func on_show_exit() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("player exited!")
+		SignalManager.emit_game_over(true)

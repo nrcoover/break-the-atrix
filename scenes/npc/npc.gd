@@ -180,3 +180,8 @@ func _on_shoot_timer_timeout() -> void:
 	if _state != EnemyState.Chasing: return
 	
 	shoot()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		SignalManager.emit_game_over(false)

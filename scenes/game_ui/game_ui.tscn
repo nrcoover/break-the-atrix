@@ -10,7 +10,15 @@ font_color = Color(4.3317677e-06, 0.70072377, 0.70930004, 1)
 outline_size = 6
 outline_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_1i64n"]
+font = ExtResource("2_1i64n")
+font_size = 64
+font_color = Color(0.895932, 0.4908834, 0.26112545, 1)
+outline_size = 12
+outline_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
 [node name="GameUi" type="Control" unique_id=2028195584]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,3 +61,30 @@ size_flags_vertical = 0
 text = "Find the Exit!"
 label_settings = SubResource("LabelSettings_empkq")
 horizontal_alignment = 2
+
+[node name="GameOverRect" type="ColorRect" parent="." unique_id=554043372]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="GameOverLabel" type="Label" parent="GameOverRect" unique_id=990494354]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -41.5
+offset_right = 210.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = SubResource("LabelSettings_1i64n")
