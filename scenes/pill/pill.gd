@@ -7,8 +7,10 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	collection_sound.play()
-	disable_pill()
+	if body is Player:
+		collection_sound.play()
+		disable_pill()
+		SignalManager.emit_on_pill_collected()
 
 
 func disable_pill() -> void:

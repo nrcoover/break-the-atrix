@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b440rb81c4l1v"]
+
+[ext_resource type="Script" uid="uid://7y20swt8yl7a" path="res://scenes/game_ui/game_ui.gd" id="1_sq0em"]
+[ext_resource type="FontFile" uid="uid://bmj05qg3kbmrp" path="res://assets/fonts/TitanOne-Regular.ttf" id="2_1i64n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_empkq"]
+font = ExtResource("2_1i64n")
+font_size = 32
+font_color = Color(4.3317677e-06, 0.70072377, 0.70930004, 1)
+outline_size = 6
+outline_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[node name="GameUi" type="Control" unique_id=2028195584]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sq0em")
+
+[node name="MC" type="MarginContainer" parent="." unique_id=1602013577]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="CollectedLabel" type="Label" parent="MC" unique_id=546516253]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_empkq")
+
+[node name="TimeLabel" type="Label" parent="MC" unique_id=858048775]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "0.0 sec"
+label_settings = SubResource("LabelSettings_empkq")
+
+[node name="ExitLabel" type="Label" parent="MC" unique_id=473987921]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Find the Exit!"
+label_settings = SubResource("LabelSettings_empkq")
+horizontal_alignment = 2
