@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var speed: float = Constants.player_speed
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	handle_input()
 
 
