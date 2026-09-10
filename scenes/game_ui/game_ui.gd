@@ -22,7 +22,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
-	update_time_ui(_time)
+	
+	if get_tree().paused == false:
+		update_time_ui(_time)
 
 
 func _unhandled_input(event: InputEvent) -> void:
