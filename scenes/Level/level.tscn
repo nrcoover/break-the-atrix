@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://0w2r0i7yu38v"]
 
 [ext_resource type="TileSet" uid="uid://cmy2g4te2eq0p" path="res://resources/level_tiles.tres" id="1_nbgty"]
+[ext_resource type="Script" uid="uid://cgwsraw2eticd" path="res://scenes/level/level.gd" id="1_xv074"]
 [ext_resource type="PackedScene" uid="uid://b8kr745koe3j6" path="res://scenes/npc/npc.tscn" id="2_i166f"]
 [ext_resource type="PackedScene" uid="uid://bwnjy7x2mjj4h" path="res://scenes/player/player.tscn" id="3_i166f"]
 [ext_resource type="Texture2D" uid="uid://bql4cmjp7bot6" path="res://assets/images/shape_a.png" id="4_hnne4"]
@@ -17,6 +18,7 @@ source_geometry_group_name = &"walls"
 agent_radius = 25.0
 
 [node name="Level" type="Node" unique_id=1270704872]
+script = ExtResource("1_xv074")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=84999719]
 visible = false
