@@ -94,6 +94,7 @@ debug_path_custom_color = Color(0.9999972, 0.29553244, 0.27435127, 1)
 target_position = Vector2(400, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1563070214]
+visible = false
 
 [node name="DebugLabel" type="Label" parent="CanvasLayer" unique_id=1661111282]
 top_level = true
